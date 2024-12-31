@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import signup from '../services/auth/signup';
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 
 const SignUpDialogue = () => {
     const navigate = useNavigate();
@@ -103,6 +104,8 @@ const SignUpDialogue = () => {
               </label>
             </div>
           </div>
+      <div className="text-sm text-purple-100">Already have an account? <Link to={'/auth/login'}>Login Here!</Link></div>
+
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-all duration-300"
@@ -111,6 +114,7 @@ const SignUpDialogue = () => {
           </button>
         </div>
       </form>
+
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import login from '../services/auth/login'
 import { useNavigate } from 'react-router-dom';
+import {Link} from 'react-router-dom'
 const LoginDialogue = () => {
     const navigate =  useNavigate();
   const [formData, setFormData] = useState({
@@ -89,6 +90,8 @@ const LoginDialogue = () => {
               {/* <a href="#" className="text-sm text-blue-500 hover:text-blue-600">Forgot password?</a> */}
             </div>
           </div>
+      <div className="text-sm text-gray-800">Create an account? <Link to={'/auth/signup'}>Sign Up Here!</Link></div>
+
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-all duration-300"
