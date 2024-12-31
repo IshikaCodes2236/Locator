@@ -5,8 +5,12 @@ import './App.css'
 import SearchLocations from './pages/SearchLocations'
 import PermissionModal from './components/PermissionModal'
 import { useModal } from './context/ModalContext';
-
+import {Routes, Route} from 'react-router-dom'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import useAuthRedirect from './hooks/useAuthRedirect';
 function App() {
+  // useAuthRedirect();
   const { openModal } = useModal();
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -43,7 +47,15 @@ function App() {
     <>
       <div className='h4 text-red-400'>
         <PermissionModal onEnableLocation={handleEnableLocation}></PermissionModal>
-        <SearchLocations/>
+        <Routes>
+          <Route path='/auth/login' element={<Login/>}></Route>
+          <Route path='/auth/signup' element={<Signup/>}></Route>
+
+          <Route path='/location' element={<SearchLocations/>}></Route>
+
+
+        </Routes>
+        
       </div>
     </>
   )
