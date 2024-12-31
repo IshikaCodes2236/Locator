@@ -11,7 +11,7 @@ const AddAddress = () => {
       </div>
 
       <div className="flex-1">
-        <AddAddress />
+        <AddressForm />
       </div>
     </div>
   )

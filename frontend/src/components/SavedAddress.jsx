@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SavedAddress = () => {
-    const [addresses, setAddresses] = useState([]);  // State to store address data
-    const [searchQuery, setSearchQuery] = useState(''); // State to store search query
+    const [addresses, setAddresses] = useState([]); 
+    const [searchQuery, setSearchQuery] = useState(''); 
     const navigate = useNavigate();
 
-    // Fetch addresses on component mount
+  
     useEffect(() => {
         const fetchAddresses = async () => {
             const token = localStorage.getItem('token');

@@ -56,7 +56,7 @@ const saveLocation = async (req, res) => {
     
     try {
         const user = req.user; 
-
+        console.log(req.user);
         if (!user) {
             return res.status(403).json({ message: 'User not authenticated' });
         }
@@ -78,7 +78,7 @@ const saveLocation = async (req, res) => {
             latitude: locationDetails.latitude,
             longitude: locationDetails.longitude,
             addressType: locationData.addressType,
-            user: req.user.id,
+            user: req.user._id,
         });
 
         
@@ -94,7 +94,7 @@ const saveLocation = async (req, res) => {
 // Function to fetch all locations by user
 const getAllLocationsByUser = async (req, res) => {
     try {
-        const userId = req.user.id; // Ensure user ID is available from authentication
+        const userId = req.user._id; 
 
         if (!userId) {
             return res.status(403).json({ message: 'User not authenticated' });

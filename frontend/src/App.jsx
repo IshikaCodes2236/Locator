@@ -11,7 +11,16 @@ import Signup from './pages/Signup'
 import useAuthRedirect from './hooks/useAuthRedirect';
 import AddAddress from './pages/AddAddress'
 import SavedAddress from './components/SavedAddress'
+import { useNavigate } from 'react-router-dom'
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(!token)
+    {
+      navigate('/auth/login');
+    }
+  })
   // useAuthRedirect();
   const { openModal } = useModal();
   useEffect(() => {
