@@ -14,9 +14,8 @@ const authMiddleware = require('./middlewares/auth')
 dotenv.config();
 
 const app = express();
-app.use(cors());
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: ['https://locator-4sjp-ishikacodes2236s-projects.vercel.app/','https://locator-4sjp-git-main-ishikacodes2236s-projects.vercel.app/', 'https://locator-4sjp.vercel.app/'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
