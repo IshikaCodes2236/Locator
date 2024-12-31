@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Sidebar = () => {
+    const handleLogout = ()=>{
+        localStorage.removeItem('token');
+        window.location.reload();
+    }
   return (
     <div className="fixed h-screen w-64 bg-slate-50 border-r border-slate-200 hidden lg:block">
       <div className="p-6">
@@ -40,6 +44,7 @@ const Sidebar = () => {
           </Link>
         </div>
       </div>
+      <button className='absolute bottom-0 left-0' onClick={()=>{handleLogout}}>Logout</button>
     </div>
   );
 };

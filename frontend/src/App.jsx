@@ -9,6 +9,8 @@ import {Routes, Route} from 'react-router-dom'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import useAuthRedirect from './hooks/useAuthRedirect';
+import AddAddress from './pages/AddAddress'
+import SavedAddress from './components/SavedAddress'
 function App() {
   // useAuthRedirect();
   const { openModal } = useModal();
@@ -45,13 +47,17 @@ function App() {
 
   return (
     <>
-      <div className='h4 text-red-400'>
+      <div className=' text-slate-700'>
         <PermissionModal onEnableLocation={handleEnableLocation}></PermissionModal>
         <Routes>
           <Route path='/auth/login' element={<Login/>}></Route>
           <Route path='/auth/signup' element={<Signup/>}></Route>
 
           <Route path='/location' element={<SearchLocations/>}></Route>
+          <Route path='/address-form' element={<AddAddress/>}></Route>
+          <Route path='/saved' element={<SavedAddress/>}></Route>
+
+
 
 
         </Routes>

@@ -3,9 +3,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+const locationRoutes = require('./routes/location')
 const dotenv = require('dotenv');
 
 const cors = require('cors');
+const authMiddleware = require('./middlewares/auth')
 
 
 
@@ -22,6 +24,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
+app.use(bodyParser.json()); // for parsing application/json
+
+// If you are using express >= 4.16.0, you can use the built-in express.json() instead:
+app.use(express.json());
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/locations', {
@@ -35,6 +41,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/locations
 
 
 app.use('/api/auth', authRoutes);
+app.use('/api/location', authMiddleware, locationRoutes);
+
 const PORT = process.env.PORT
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
